@@ -9,6 +9,10 @@ const progressBar = document.getElementById("progressBar");
 const fontSelect = document.getElementById("fontSelect");
 const sizeLabel = document.getElementById("currentSizeLabel");
 
+// Assignments Menu Elements
+const assignmentsToggle = document.getElementById("assignmentsToggle");
+const assignmentsPanel = document.getElementById("assignmentsPanel");
+
 let currentSize = 18;
 
 // --- INITIALIZATION ---
@@ -26,28 +30,70 @@ window.onload = () => {
   applyFontSize();
 
   if (fontSelect) fontSelect.value = savedFont;
+
+  initUrlTooltips();
 };
 
 // --- SETTINGS PANEL TOGGLE ---
 if (settingsToggle) {
   settingsToggle.addEventListener("click", () => {
     settingsPanel.classList.remove("translate-x-[120%]");
+    closeAssignmentsMenu();
   });
 }
+
 if (closeSettings) {
   closeSettings.addEventListener("click", () => {
     settingsPanel.classList.add("translate-x-[120%]");
   });
 }
 
+// --- ASSIGNMENTS MENU TOGGLE ---
+if (assignmentsToggle && assignmentsPanel) {
+  assignmentsToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isClosed = assignmentsPanel.classList.contains("invisible");
+
+    if (isClosed) {
+      openAssignmentsMenu();
+    } else {
+      closeAssignmentsMenu();
+    }
+  });
+}
+
+function openAssignmentsMenu() {
+  if (!assignmentsPanel) return;
+  assignmentsPanel.classList.remove("invisible", "opacity-0", "translate-y-1");
+  // Close settings if open
+  if (settingsPanel) settingsPanel.classList.add("translate-x-[120%]");
+}
+
+function closeAssignmentsMenu() {
+  if (!assignmentsPanel) return;
+  assignmentsPanel.classList.add("invisible", "opacity-0", "translate-y-1");
+}
+
 // --- GLOBAL CLICK LISTENER (CLOSE PANELS) ---
 document.addEventListener("click", (event) => {
   // Close Settings Panel logic
-  if (!settingsPanel.classList.contains("translate-x-[120%]")) {
+  if (
+    settingsPanel &&
+    !settingsPanel.classList.contains("translate-x-[120%]")
+  ) {
     const isClickInsidePanel = settingsPanel.contains(event.target);
     const isClickOnToggle = settingsToggle.contains(event.target);
     if (!isClickInsidePanel && !isClickOnToggle) {
       settingsPanel.classList.add("translate-x-[120%]");
+    }
+  }
+
+  // Close Assignments Menu logic
+  if (assignmentsPanel && !assignmentsPanel.classList.contains("invisible")) {
+    const isClickInsideMenu = assignmentsPanel.contains(event.target);
+    const isClickOnToggle = assignmentsToggle.contains(event.target);
+    if (!isClickInsideMenu && !isClickOnToggle) {
+      closeAssignmentsMenu();
     }
   }
 });
@@ -64,6 +110,7 @@ function setTheme(themeName) {
 }
 
 function setFont(fontValue) {
+  if (!articleText) return;
   articleText.style.fontFamily = fontValue;
   const headings = articleText.querySelectorAll("h1, h2, h3, h4");
   headings.forEach((h) => (h.style.fontFamily = fontValue));
@@ -71,6 +118,7 @@ function setFont(fontValue) {
 }
 
 function setWidth(maxWidthClass) {
+  if (!contentContainer) return;
   contentContainer.classList.remove("max-w-2xl", "max-w-4xl", "max-w-6xl");
   contentContainer.classList.add(maxWidthClass);
   localStorage.setItem("width", maxWidthClass);
@@ -84,8 +132,9 @@ function adjustFontSize(delta) {
 }
 
 function applyFontSize() {
+  if (!articleText) return;
   articleText.style.fontSize = `${currentSize}px`;
-  sizeLabel.textContent = `${currentSize}px`;
+  if (sizeLabel) sizeLabel.textContent = `${currentSize}px`;
   localStorage.setItem("size", currentSize);
 }
 
@@ -98,3 +147,68 @@ window.onscroll = function () {
   let scrolled = (winScroll / height) * 100;
   if (progressBar) progressBar.style.width = scrolled + "%";
 };
+
+// --- INTERACTIVE ARTEFACTS ---
+function toggleTei(mode) {
+  const renderView = document.getElementById("tei-render");
+  const codeView = document.getElementById("tei-code");
+  const btnRender = document.getElementById("btn-render");
+  const btnCode = document.getElementById("btn-code");
+
+  if (!renderView || !codeView) return;
+
+  // Updated styles with Accent Border
+  const activeClass =
+    "px-3 py-1.5 text-xs font-medium rounded-md transition-all bg-accent text-white border border-accent";
+  const inactiveClass =
+    "px-3 py-1.5 text-xs font-medium rounded-md transition-all text-secondary hover:text-primary border border-accent/30 hover:border-accent";
+
+  if (mode === "render") {
+    renderView.classList.remove("hidden");
+    codeView.classList.add("hidden");
+
+    btnRender.className = activeClass;
+    btnCode.className = inactiveClass;
+  } else {
+    renderView.classList.add("hidden");
+    codeView.classList.remove("hidden");
+
+    btnRender.className = inactiveClass;
+    btnCode.className = activeClass;
+  }
+}
+
+// --- TOOLTIPS ---
+function initUrlTooltips() {
+  const tooltip = document.getElementById("url-tooltip");
+  const triggers = document.querySelectorAll(".url-tooltip-trigger");
+
+  if (!tooltip || triggers.length === 0) return;
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("mouseenter", () => {
+      tooltip.textContent = trigger.href;
+      tooltip.classList.remove("hidden");
+
+      requestAnimationFrame(() => {
+        tooltip.classList.remove("opacity-0");
+      });
+
+      const linkRect = trigger.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+
+      const left = linkRect.left + linkRect.width / 2 - tooltipRect.width / 2;
+      const top = linkRect.top - tooltipRect.height - 8;
+
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${top}px`;
+    });
+
+    trigger.addEventListener("mouseleave", () => {
+      tooltip.classList.add("opacity-0");
+      setTimeout(() => {
+        tooltip.classList.add("hidden");
+      }, 200);
+    });
+  });
+}
