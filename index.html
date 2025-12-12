@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth scroll-pt-24">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Reflection on Group Work: Fujian-Taiwan 3D Exhibition</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Roboto+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
+            rel="stylesheet"
+        />
+
+        <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "var(--color-primary)",
+                            secondary: "var(--color-secondary)",
+                            bg: "var(--color-bg)",
+                            surface: "var(--color-surface)",
+                            accent: "var(--color-accent)",
+                            "accent-hover": "var(--color-accent-hover)",
+                        },
+                        typography: (theme) => ({
+                            DEFAULT: {
+                                css: {
+                                    color: "var(--color-secondary)",
+                                    maxWidth: "none",
+                                    a: {
+                                        color: "var(--color-accent)",
+                                        textDecoration: "none",
+                                        borderBottom:
+                                            "1px solid var(--color-accent)",
+                                        transition: "color 0.2s",
+                                        "&:hover": {
+                                            color: "var(--color-accent-hover)",
+                                            borderBottomColor:
+                                                "var(--color-accent-hover)",
+                                        },
+                                    },
+                                    h1: {
+                                        color: "var(--color-primary)",
+                                        fontFamily: "Inter, sans-serif",
+                                    },
+                                    h2: {
+                                        color: "var(--color-primary)",
+                                        fontFamily: "Inter, sans-serif",
+                                        marginTop: "2em",
+                                    },
+                                    h3: {
+                                        color: "var(--color-primary)",
+                                        fontFamily: "Inter, sans-serif",
+                                    },
+                                    strong: { color: "var(--color-primary)" },
+                                    blockquote: {
+                                        borderLeftColor: "var(--color-accent)",
+                                        color: "var(--color-primary)",
+                                        fontStyle: "italic",
+                                        backgroundColor: "var(--color-surface)",
+                                        padding: "1.5rem",
+                                        borderRadius: "0 0.5rem 0.5rem 0",
+                                        boxShadow:
+                                            "0 4px 6px -1px rgba(0, 0, 0, 0.05)",
+                                    },
+                                    code: {
+                                        color: "var(--color-accent)",
+                                        backgroundColor: "var(--color-bg)",
+                                        padding: "0.2em 0.4em",
+                                        borderRadius: "0.25rem",
+                                        fontWeight: "500",
+                                    },
+                                },
+                            },
+                        }),
+                    },
+                },
+            };
+        </script>
+
+        <link rel="stylesheet" href="styles.css" />
+        <style>
+            .text-balance {
+                text-wrap: balance;
+            }
+        </style>
+    </head>
+
+    <body
+        class="bg-bg text-secondary transition-colors duration-500 min-h-screen relative overflow-x-hidden antialiased selection:bg-accent selection:text-white flex flex-col"
+    >
+        <div class="fixed top-0 left-0 w-full h-1 z-[60]">
+            <div
+                id="progressBar"
+                class="h-full bg-gradient-to-r from-accent to-accent-hover w-0 transition-all duration-150 ease-out shadow-[0_0_15px_var(--color-accent)]"
+            ></div>
+        </div>
+
+        <div
+            class="fixed inset-0 -z-10 isolate overflow-hidden pointer-events-none"
+        >
+            <div
+                aria-hidden="true"
+                class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+            >
+                <div
+                    style="
+                        clip-path: polygon(
+                            74.1% 44.1%,
+                            100% 61.6%,
+                            97.5% 26.9%,
+                            85.5% 0.1%,
+                            80.7% 2%,
+                            72.5% 32.5%,
+                            60.2% 62.4%,
+                            52.4% 68.1%,
+                            47.5% 58.3%,
+                            45.2% 34.5%,
+                            27.5% 76.7%,
+                            0.1% 64.9%,
+                            17.9% 100%,
+                            27.6% 76.8%,
+                            76.1% 97.7%,
+                            74.1% 44.1%
+                        );
+                    "
+                    class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-30 bg-gradient-to-tr from-accent/40 to-primary/30 opacity-60 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] transition-colors duration-700"
+                ></div>
+            </div>
+        </div>
+
+        <nav
+            class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-bg/70 border-b border-primary/5 transition-all duration-300 supports-[backdrop-filter]:bg-bg/60"
+        >
+            <div
+                class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between"
+            >
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-3 group cursor-default">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold font-serif group-hover:bg-accent group-hover:text-white transition-all duration-300"
+                        >
+                            GW
+                        </div>
+                        <span
+                            class="font-semibold text-primary tracking-tight hidden sm:block"
+                            >Group Reflection</span
+                        >
+                    </div>
+                </div>
+
+                <button
+                    id="settingsToggle"
+                    class="group flex items-center gap-2 px-4 py-2 rounded-full bg-surface border border-primary/10 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 focus:outline-none"
+                >
+                    <span
+                        class="text-xs font-medium uppercase tracking-wider text-secondary group-hover:text-primary"
+                        >Reader View</span
+                    >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 text-accent group-hover:rotate-90 transition-transform duration-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                        />
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <aside
+            id="settingsPanel"
+            class="fixed top-20 right-4 w-80 bg-surface/95 backdrop-blur-xl border border-primary/10 shadow-2xl rounded-2xl p-6 z-40 transform translate-x-[120%] transition-transform duration-300 ease-in-out ring-1 ring-black/5"
+        >
+            <div
+                class="flex justify-between items-center mb-6 border-b border-primary/10 pb-4"
+            >
+                <h3 class="font-sans font-semibold text-primary">
+                    Display Preferences
+                </h3>
+                <button
+                    id="closeSettings"
+                    class="text-secondary hover:text-accent transition-colors text-2xl leading-none"
+                >
+                    &times;
+                </button>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <label
+                        class="text-xs font-bold uppercase tracking-wider text-secondary mb-3 block"
+                        >Theme</label
+                    >
+                    <div class="grid grid-cols-4 gap-2">
+                        <button
+                            onclick="setTheme('light')"
+                            class="h-10 rounded-lg bg-white border border-gray-200 text-gray-800 hover:ring-2 hover:ring-blue-500 transition-all shadow-sm"
+                            title="Light"
+                        >
+                            Aa
+                        </button>
+                        <button
+                            onclick="setTheme('sepia')"
+                            class="h-10 rounded-lg bg-[#f9f5eb] border border-[#e6dcc6] text-[#5f4b32] hover:ring-2 hover:ring-orange-700 transition-all shadow-sm"
+                            title="Sepia"
+                        >
+                            Aa
+                        </button>
+                        <button
+                            onclick="setTheme('grey')"
+                            class="h-10 rounded-lg bg-[#262626] border border-[#404040] text-[#a3a3a3] hover:ring-2 hover:ring-gray-400 transition-all shadow-sm"
+                            title="Grey"
+                        >
+                            Aa
+                        </button>
+                        <button
+                            onclick="setTheme('dark')"
+                            class="h-10 rounded-lg bg-[#0f172a] border border-[#1e293b] text-white hover:ring-2 hover:ring-teal-400 transition-all shadow-sm"
+                            title="Dark"
+                        >
+                            Aa
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label
+                        class="text-xs font-bold uppercase tracking-wider text-secondary mb-3 block"
+                        >Typeface</label
+                    >
+                    <div class="relative">
+                        <select
+                            id="fontSelect"
+                            onchange="setFont(this.value)"
+                            class="w-full bg-bg border border-primary/20 text-primary rounded-lg p-2.5 text-sm appearance-none focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-shadow"
+                        >
+                            <option value="'Times New Roman', Times, serif">
+                                Times New Roman
+                            </option>
+                            <option value="'Merriweather', serif">
+                                Merriweather
+                            </option>
+                            <option value="'Inter', sans-serif">Inter</option>
+                            <option value="Arial, Helvetica, sans-serif">
+                                Arial
+                            </option>
+                            <option value="'Aptos', sans-serif">Aptos</option>
+                            <option value="'Lora', serif">Lora</option>
+                            <option value="Georgia, serif">Georgia</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label
+                        class="text-xs font-bold uppercase tracking-wider text-secondary mb-3 block"
+                        >Size</label
+                    >
+                    <div
+                        class="flex items-center gap-3 bg-bg rounded-lg p-1 border border-primary/10"
+                    >
+                        <button
+                            onclick="adjustFontSize(-2)"
+                            class="p-2 hover:text-accent transition-colors w-10 text-center text-secondary rounded"
+                        >
+                            A-
+                        </button>
+                        <span
+                            id="currentSizeLabel"
+                            class="flex-1 text-center font-mono text-sm text-primary"
+                            >18px</span
+                        >
+                        <button
+                            onclick="adjustFontSize(2)"
+                            class="p-2 hover:text-accent transition-colors w-10 text-center text-secondary rounded"
+                        >
+                            A+
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label
+                        class="text-xs font-bold uppercase tracking-wider text-secondary mb-3 block"
+                        >Page Width</label
+                    >
+                    <div class="flex gap-2">
+                        <button
+                            onclick="setWidth('max-w-2xl')"
+                            class="flex-1 py-2 text-xs border border-primary/20 rounded-lg text-secondary hover:bg-accent/10 hover:border-accent hover:text-accent transition-all"
+                        >
+                            Narrow
+                        </button>
+                        <button
+                            onclick="setWidth('max-w-4xl')"
+                            class="flex-1 py-2 text-xs border border-primary/20 rounded-lg text-secondary hover:bg-accent/10 hover:border-accent hover:text-accent transition-all"
+                        >
+                            Normal
+                        </button>
+                        <button
+                            onclick="setWidth('max-w-6xl')"
+                            class="flex-1 py-2 text-xs border border-primary/20 rounded-lg text-secondary hover:bg-accent/10 hover:border-accent hover:text-accent transition-all"
+                        >
+                            Wide
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main
+            id="contentContainer"
+            class="max-w-4xl mx-auto px-6 pt-32 pb-24 transition-all duration-300 flex-grow"
+        >
+            <header class="mb-24 text-center">
+                <h1
+                    class="text-4xl md:text-5xl lg:text-7xl font-bold text-primary mb-6 leading-tight tracking-tight text-balance"
+                >
+                    Reflection on the Group Work
+                </h1>
+
+                <p
+                    class="mt-6 text-lg md:text-xl text-secondary font-light max-w-2xl mx-auto text-pretty"
+                >
+                    Developing a virtual exhibition on Fujian-Taiwan culture
+                </p>
+
+                <div class="mt-8 flex items-center justify-center gap-x-6">
+                    <p class="text-accent font-serif opacity-90 italic">
+                        Callum Rhodes
+                    </p>
+                </div>
+            </header>
+
+            <article
+                id="articleText"
+                class="prose prose-lg max-w-none prose-headings:scroll-mt-24"
+            >
+                <p class="text-primary/80 font-serif">
+                    This reflection outlines our group's journey in building a
+                    3D virtual exhibition centred on Fujian-Taiwan culture. It
+                    discusses our rationale for selecting the topic and the
+                    Metasteps platform, evaluates the success of our
+                    implementation, and critically analyses the technical
+                    limitations we encountered regarding data sovereignty and
+                    open access.
+                </p>
+
+                <section id="section-topic">
+                    <h2>Topic and Platform Selection</h2>
+                    <p>
+                        We decided to build a 3D virtual exhibition on
+                        Fujian-Taiwan culture, because this topic aligned
+                        closely with our group’s interests. In particular, I am
+                        personally interested in the language issues in the
+                        region from a linguistic perspective, especially the
+                        Hokkien language. We chose to create the exhibition
+                        using Metasteps, because:
+                    </p>
+                    <ol>
+                        <li>
+                            <strong>Suitability of Materials:</strong> The
+                            materials we collected were well suited to an
+                            exhibition format.
+                        </li>
+                        <li>
+                            <strong>Technical Sophistication:</strong> Metasteps
+                            offers a sophisticated, high-tech 3D environment
+                            that we wanted to make use of, benefiting not only
+                            this project, but also our future study. The virtual
+                            exhibition hall on Metasteps supports a wide range
+                            of contents, such as text, images, videos, and 3D
+                            objects, which was very promising and intriguing for
+                            our project.
+                        </li>
+                    </ol>
+                </section>
+
+                <section id="section-outcome">
+                    <h2>Implementation and Critical Review</h2>
+                    <p>
+                        Our implementation worked well. The final exhibition met
+                        our initial goals. I think everything worked well.
+                        However, if I were to do it again, I would prefer
+                        choosing a more “open” platform. Metasteps confines our
+                        work to its own ecosystem: the exhibition cannot be
+                        exported, embedded elsewhere, or shared in a standalone
+                        format. It would be better if we could export our
+                        virtual exhibition in some kind of file format (for 3D
+                        virtual exhibitions) or embed it to a webpage if needed.
+                        Or, even better if the source code of the entire
+                        platform could be open source.
+                    </p>
+                </section>
+            </article>
+        </main>
+
+        <footer
+            class="bg-gray-100 dark:bg-[#0B1120] border-t border-primary/10 mt-auto"
+        >
+            <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+                <div class="md:flex md:justify-between">
+                    <div class="mb-6 md:mb-0">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold font-serif"
+                            >
+                                GW
+                            </div>
+                            <span
+                                class="self-center text-2xl font-semibold whitespace-nowrap text-primary"
+                                >Group Reflection</span
+                            >
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2">
+                        <div>
+                            <h2
+                                class="mb-6 text-sm font-semibold text-primary uppercase"
+                            >
+                                My Other Assignments
+                            </h2>
+                            <ul class="text-secondary font-medium">
+                                <li class="mb-4">
+                                    <a
+                                        href="#"
+                                        class="hover:underline text-accent"
+                                        >Presentation</a
+                                    >
+                                </li>
+                                <li class="mb-4">
+                                    <a href="#" class="hover:underline"
+                                        >Reflection on Topics in the DH6033
+                                        Course</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h2
+                                class="mb-6 text-sm font-semibold text-primary uppercase"
+                            >
+                                Socials
+                            </h2>
+                            <div class="flex gap-4">
+                                <a
+                                    href="#"
+                                    class="text-secondary hover:text-primary transition-colors"
+                                >
+                                    <span class="sr-only">GitHub</span>
+                                    <svg
+                                        class="w-5 h-5"
+                                        aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z"
+                                            clip-rule="evenodd"
+                                        />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="#"
+                                    class="text-secondary hover:text-primary transition-colors"
+                                >
+                                    <span class="sr-only">Twitter</span>
+                                    <svg
+                                        class="w-5 h-5"
+                                        aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z"
+                                        />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-6 border-primary/10 sm:mx-auto lg:my-8" />
+                <div class="sm:flex sm:items-center sm:justify-between">
+                    <span class="text-sm text-secondary sm:text-center"
+                        >© 2025
+                        <a href="#" class="hover:underline">Callum Rhodes</a>.
+                        All Rights Reserved.
+                    </span>
+                </div>
+            </div>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
